@@ -1,25 +1,19 @@
 package com.example.klemen.atuner;
 
-import android.Manifest;
 import android.app.Activity;
-import android.content.pm.PackageManager;
-import android.graphics.drawable.Drawable;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
-import android.support.v4.app.ActivityCompat;
+import android.media.Image;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.nio.Buffer;
 import java.util.ArrayList;
 
 import be.tarsos.dsp.AudioDispatcher;
@@ -30,7 +24,7 @@ import be.tarsos.dsp.pitch.PitchDetectionHandler;
 import be.tarsos.dsp.pitch.PitchDetectionResult;
 import be.tarsos.dsp.pitch.PitchProcessor;
 
-public class GuitarTuner extends Activity {
+public class UkuleleTuner extends Activity {
 
     TextView pitchText;
     TextView noteText;
@@ -42,6 +36,7 @@ public class GuitarTuner extends Activity {
     AudioDispatcher dispatcher;
     ImageView leftArrow;
     ImageView rightArrow;
+
 
 
     @Override
@@ -60,7 +55,7 @@ public class GuitarTuner extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_guitar_tuner);
+        setContentView(R.layout.activity_ukulele_tuner);
 
 
         noteText = findViewById(R.id.noteTV);
@@ -130,108 +125,75 @@ public class GuitarTuner extends Activity {
     public void processPitch() {
 
         float pitchInHz = getMean();
+        //Log.e("MYLOG", pitchInHz + "");
 
-
-        if (pitchInHz >= 78 && pitchInHz <= 86) {
-            noteText.setText("E2");
-            if (pitchInHz >= 78 && pitchInHz < 80) {
+        if (pitchInHz >= 388 && pitchInHz <= 396) {
+            noteText.setText("G4");
+            if (pitchInHz >= 388 && pitchInHz < 390) {
                 rightArrow.setVisibility(View.VISIBLE);
                 leftArrow.setVisibility(View.INVISIBLE);
-            } else if (pitchInHz <= 86 && pitchInHz > 84) {
-                leftArrow.setVisibility(View.VISIBLE);
+            } else if (pitchInHz <= 396 && pitchInHz > 394) {
                 rightArrow.setVisibility(View.INVISIBLE);
+                leftArrow.setVisibility(View.VISIBLE);
             }
-            relativeLayout.setBackgroundResource(R.drawable.guitar_untunnede);
-            if (pitchInHz >= 80 && pitchInHz <= 84) {
-                relativeLayout.setBackgroundResource(R.drawable.guitar_tunnede);
+            relativeLayout.setBackgroundResource(R.drawable.ukulele_untunedg);
+            if (pitchInHz >= 390 && pitchInHz <= 394) { // 392
+                relativeLayout.setBackgroundResource(R.drawable.ukulele_tunedg);
                 leftArrow.setVisibility(View.INVISIBLE);
                 rightArrow.setVisibility(View.INVISIBLE);
             }
 //-----------------------------------------------------------------------------------
-        } else if (pitchInHz >= 106 && pitchInHz <= 114) {
-            noteText.setText("A2");
-            if (pitchInHz >= 106 && pitchInHz < 108) {
+        } else if (pitchInHz >= 257 && pitchInHz <= 265) {
+            noteText.setText("C4");
+            if (pitchInHz >= 257 && pitchInHz < 259) {
                 rightArrow.setVisibility(View.VISIBLE);
                 leftArrow.setVisibility(View.INVISIBLE);
-            } else if (pitchInHz <= 114 && pitchInHz > 112) {
-                leftArrow.setVisibility(View.VISIBLE);
+            } else if (pitchInHz <= 265 && pitchInHz > 263) {
                 rightArrow.setVisibility(View.INVISIBLE);
+                leftArrow.setVisibility(View.VISIBLE);
             }
-            relativeLayout.setBackgroundResource(R.drawable.guitar_untunneda);
-            if (pitchInHz >= 108 && pitchInHz <= 112) {
-                relativeLayout.setBackgroundResource(R.drawable.guitar_tunneda);
+            relativeLayout.setBackgroundResource(R.drawable.ukulele_untunedc);
+            if (pitchInHz >= 259 && pitchInHz <= 263) { //261
+                relativeLayout.setBackgroundResource(R.drawable.ukulele_tunedc);
                 leftArrow.setVisibility(View.INVISIBLE);
                 rightArrow.setVisibility(View.INVISIBLE);
             }
 //-----------------------------------------------------------------------------------
-        } else if (pitchInHz >= 142 && pitchInHz <=150) {
-            noteText.setText("D3");
-            if (pitchInHz >= 142 && pitchInHz < 144) {
-                rightArrow.setVisibility(View.VISIBLE);
-                leftArrow.setVisibility(View.INVISIBLE);
-            } else if (pitchInHz <= 150 && pitchInHz > 148) {
-                leftArrow.setVisibility(View.VISIBLE);
-                rightArrow.setVisibility(View.INVISIBLE);
-            }
-            relativeLayout.setBackgroundResource(R.drawable.guitar_untunnedd);
-            if (pitchInHz >= 144 && pitchInHz <= 148) {
-                relativeLayout.setBackgroundResource(R.drawable.guitar_tunnedd);
-                leftArrow.setVisibility(View.INVISIBLE);
-                rightArrow.setVisibility(View.INVISIBLE);
-            }
-//-----------------------------------------------------------------------------------
-        } else if (pitchInHz >= 192 && pitchInHz <= 200) {
-            noteText.setText("G2");
-            if (pitchInHz >= 192 && pitchInHz < 194) {
-                rightArrow.setVisibility(View.VISIBLE);
-                leftArrow.setVisibility(View.INVISIBLE);
-            } else if (pitchInHz <= 200 && pitchInHz > 198) {
-                leftArrow.setVisibility(View.VISIBLE);
-                rightArrow.setVisibility(View.INVISIBLE);
-            }
-            relativeLayout.setBackgroundResource(R.drawable.guitar_untunnedg);
-            if (pitchInHz >= 194 && pitchInHz <= 198) {
-                relativeLayout.setBackgroundResource(R.drawable.guitar_tunnedg);
-                leftArrow.setVisibility(View.INVISIBLE);
-                rightArrow.setVisibility(View.INVISIBLE);
-
-            }
-//-----------------------------------------------------------------------------------
-        } else if (pitchInHz >= 242 && pitchInHz <= 251) {
-            noteText.setText("B3");
-            if (pitchInHz >= 242 && pitchInHz < 244) {
-                rightArrow.setVisibility(View.VISIBLE);
-                leftArrow.setVisibility(View.INVISIBLE);
-            } else if (pitchInHz <= 251 && pitchInHz > 249) {
-                leftArrow.setVisibility(View.VISIBLE);
-                rightArrow.setVisibility(View.INVISIBLE);
-            }
-            relativeLayout.setBackgroundResource(R.drawable.guitar_untunnedb);
-            if (pitchInHz >= 244 && pitchInHz <= 249) {
-                relativeLayout.setBackgroundResource(R.drawable.guitar_tunnedb);
-                leftArrow.setVisibility(View.INVISIBLE);
-                rightArrow.setVisibility(View.INVISIBLE);
-            }
-//-----------------------------------------------------------------------------------
-        } else if (pitchInHz >= 325 && pitchInHz <= 334) {
-            noteText.setText("e4");
+        } else if (pitchInHz >= 325 && pitchInHz <= 333) {
+            noteText.setText("E4");
             if (pitchInHz >= 325 && pitchInHz < 327) {
                 rightArrow.setVisibility(View.VISIBLE);
                 leftArrow.setVisibility(View.INVISIBLE);
-            } else if (pitchInHz <= 334 && pitchInHz > 331) {
+            } else if (pitchInHz <= 333 && pitchInHz > 331) {
+                rightArrow.setVisibility(View.INVISIBLE);
                 leftArrow.setVisibility(View.VISIBLE);
+            }
+            relativeLayout.setBackgroundResource(R.drawable.ukulele_untunede);
+            if (pitchInHz >= 327 && pitchInHz <= 331) { //329
+                relativeLayout.setBackgroundResource(R.drawable.ukulele_tunede);
+                leftArrow.setVisibility(View.INVISIBLE);
                 rightArrow.setVisibility(View.INVISIBLE);
             }
-            relativeLayout.setBackgroundResource(R.drawable.guitar_untunned_e);
-            if (pitchInHz >= 327 && pitchInHz <= 331) {
-                relativeLayout.setBackgroundResource(R.drawable.guitar_tunned_e);
+//-----------------------------------------------------------------------------------
+        } else if (pitchInHz >= 436 && pitchInHz <= 444) {
+            noteText.setText("A4");
+            if (pitchInHz >= 436 && pitchInHz < 438) {
+                rightArrow.setVisibility(View.VISIBLE);
+                leftArrow.setVisibility(View.INVISIBLE);
+            } else if (pitchInHz <= 444 && pitchInHz > 442) {
+                rightArrow.setVisibility(View.INVISIBLE);
+                leftArrow.setVisibility(View.VISIBLE);
+            }
+            relativeLayout.setBackgroundResource(R.drawable.ukulele_untuneda);
+            if (pitchInHz >= 438 && pitchInHz <= 442) { //440
+                relativeLayout.setBackgroundResource(R.drawable.ukulele_tuneda);
                 leftArrow.setVisibility(View.INVISIBLE);
                 rightArrow.setVisibility(View.INVISIBLE);
             }
 //-----------------------------------------------------------------------------------
         } else {
             //noteText.setText("");
-            relativeLayout.setBackgroundResource(R.drawable.guitar_static);
+            relativeLayout.setBackgroundResource(R.drawable.ukulele_static);
         }
     }
 

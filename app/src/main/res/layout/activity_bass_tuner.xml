@@ -5,11 +5,47 @@
     android:background="@drawable/bass_static"
     android:id="@+id/relativeLayout">
 
-    <TextView
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/noteTV"
-        android:textAlignment="center"
-        android:textSize="20dp"/>
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/leftarrow"
+            android:id="@+id/leftArrowIV" />
+
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/noteTV"
+            android:textColor="#ffffff"
+            android:textAlignment="center"
+            android:textSize="30dp"
+            android:layout_toRightOf="@id/leftArrowIV"/>
+
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:id="@+id/rightArrowIV"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/rightarrow"
+            android:layout_toRightOf="@+id/noteTV"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:src="@drawable/logo2"/>
 
 </RelativeLayout>

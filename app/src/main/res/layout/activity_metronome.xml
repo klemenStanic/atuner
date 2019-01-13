@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#515151">
+
+    <RelativeLayout
+        android:layout_above="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textAlignment="center"
+            android:textSize="80dp"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:id="@+id/currentBPM"
+            android:layout_marginBottom="40dp"
+            android:textColor="#cccccc"
+            android:text="60"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/currentBPM"
+            android:layout_marginBottom="40dp"
+            android:layout_marginLeft="10dp"
+            android:textSize="40dp"
+            android:textColor="#cccccc"
+            android:text="BPM" />
+
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/minusIV"
+        android:src="@drawable/minus"
+        android:layout_toLeftOf="@id/seekBar"
+        android:layout_centerVertical="true"/>
+
+    <SeekBar
+        android:progress="60"
+        android:max="260"
+        android:min="20"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/seekBar"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content" />
+    
+
+
+    <ImageView
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/plusIV"
+        android:src="@drawable/plus"
+        android:layout_toRightOf="@id/seekBar"
+        android:layout_centerVertical="true"/>
+    
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:src="@drawable/logo2"/>
+
+    <ImageView
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:src="@drawable/play"
+        android:id="@+id/playBtn"
+        android:layout_below="@id/seekBar"/>
+
+
+</RelativeLayout>
